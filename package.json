@@ -4,8 +4,8 @@
   "description": "Shopify GraphQL proxy for Dify plugin integration",
   "main": "index.js",
   "scripts": {
-    "query": "ts-node -r dotenv/config --compiler-options '{\"module\":\"CommonJS\"}' minimal-shopify-query.ts",
-    "server": "ts-node -r dotenv/config --compiler-options '{\"module\":\"CommonJS\"}' graphql-server.ts",
+    "query": "npx ts-node -r dotenv/config --compiler-options '{\"module\":\"CommonJS\"}' minimal-shopify-query.ts",
+    "server": "npx ts-node -r dotenv/config --compiler-options '{\"module\":\"CommonJS\"}' graphql-server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
