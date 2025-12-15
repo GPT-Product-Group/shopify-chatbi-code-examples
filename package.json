@@ -1,12 +1,19 @@
 {
   "name": "shopify-chatbi-code-examples",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.1.0",
+  "description": "Shopify GraphQL proxy for Dify plugin integration",
   "main": "index.js",
   "scripts": {
+    "query": "ts-node -r dotenv/config --compiler-options '{\"module\":\"CommonJS\"}' minimal-shopify-query.ts",
+    "server": "ts-node -r dotenv/config --compiler-options '{\"module\":\"CommonJS\"}' graphql-server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "shopify",
+    "graphql",
+    "dify",
+    "proxy"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
