@@ -6,13 +6,14 @@
  * Inputs (environment variables):
  * - SHOP_DOMAIN: your shop domain, e.g. `your-store.myshopify.com`
  * - SHOP_ACCESS_TOKEN: Admin API access token
- * - SHOPIFY_GRAPHQL: GraphQL query string to execute (single-line or multi-line)
+ * - SHOPIFY_GRAPHQL: GraphQL query string (可选，如果通过命令行参数传递则不需要)
  * - SHOPIFY_SCOPES: optional comma-separated scopes, default:
  *   read_orders,read_products,read_customers,read_inventory
  * - SHOPIFY_API_VERSION: optional Admin API version, default 2024-10
  *
  * Usage:
- *   pnpm ts-node shopify-chatbi-code-examples/minimal-shopify-query.ts
+ *   pnpm ts-node -r dotenv/config minimal-shopify-query.ts 'query { shop { name } }'
+ *   # 或通过环境变量 SHOPIFY_GRAPHQL 传递查询
  *
  * The script will:
  * 1) Validate required inputs
@@ -106,7 +107,9 @@ async function main() {
   try {
     const shopDomain = requireEnv("SHOP_DOMAIN");
     const accessToken = requireEnv("SHOP_ACCESS_TOKEN");
-    const query = requireEnv("SHOPIFY_GRAPHQL");
+    // 支持命令行参数传递查询，如果没有则回退到环境变量
+    const cliQuery = process.argv[2]?.trim();
+    const query = cliQuery || requireEnv("SHOPIFY_GRAPHQL");
 
     console.error("[info] 正在校验 Shopify 授权 scope...");
     const requiredScopes = getRequiredScopes();
