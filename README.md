@@ -22,7 +22,17 @@ SHOPIFY_GRAPHQL='query { shop { name } }' \
 pnpm init           -- 生成package.json
 pnpm add dotenv     -- 添加环境变量
 
-pnpm ts-node -r dotenv/config --compiler-options '{"module":"CommonJS"}' minimal-shopify-query.ts 'query { shop { name } }'
+示例：
+   pnpm ts-node -r dotenv/config --compiler-options '{"module":"CommonJS"}' minimal-shopify-query.ts 'query { shop { name } }'
+输出：
+[info] 正在校验 Shopify 授权 scope...
+[info] 授权通过，正在调用 Shopify...
+{
+  "shop": {
+    "name": "Skateboard Shop"
+  }
+}
+
 ```
 
 脚本会先校验缺失的 scopes（若缺少会提示重新安装应用），然后调用 Shopify Admin GraphQL API，将原始 JSON 打印到标准输出。可直接将本目录复制到独立仓库 `shopify-chatbi-code-examples` 使用。
