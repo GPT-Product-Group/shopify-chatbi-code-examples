@@ -1,3 +1,5 @@
+/// <reference types="node" />
+
 /**
  * Minimal Shopify GraphQL runner (standalone).
  *
@@ -17,6 +19,7 @@
  * 2) Check Shopify scopes
  * 3) Run the GraphQL query and print raw JSON to stdout
  */
+
 const DEFAULT_SCOPES =
   "read_orders,read_products,read_customers,read_inventory";
 
@@ -24,7 +27,7 @@ function getRequiredScopes() {
   const scopes = process.env.SHOPIFY_SCOPES ?? DEFAULT_SCOPES;
   return scopes
     .split(",")
-    .map((scope) => scope.trim())
+    .map((scope: string) => scope.trim())
     .filter(Boolean);
 }
 
@@ -96,7 +99,7 @@ async function getMissingScopes(
     data.access_scopes.map((scope) => scope.handle.trim()).filter(Boolean),
   );
 
-  return requiredScopes.filter((scope) => !granted.has(scope));
+  return requiredScopes.filter((scope: string) => !granted.has(scope));
 }
 
 async function main() {
