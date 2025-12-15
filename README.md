@@ -18,7 +18,11 @@
 SHOP_DOMAIN=your-store.myshopify.com \
 SHOP_ACCESS_TOKEN=shpat_xxx \
 SHOPIFY_GRAPHQL='query { shop { name } }' \
-pnpm ts-node shopify-chatbi-code-examples/minimal-shopify-query.ts
+
+pnpm init           -- 生成package.json
+pnpm add dotenv     -- 添加环境变量
+
+pnpm ts-node -r dotenv/config --compiler-options '{"module":"CommonJS"}' minimal-shopify-query.ts 'query { shop { name } }'
 ```
 
 脚本会先校验缺失的 scopes（若缺少会提示重新安装应用），然后调用 Shopify Admin GraphQL API，将原始 JSON 打印到标准输出。可直接将本目录复制到独立仓库 `shopify-chatbi-code-examples` 使用。
