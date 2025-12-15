@@ -24,7 +24,7 @@
 import * as http from "http";
 import { validateAndQuery, requireEnv, ShopifyConfig } from "./shopify-graphql-core";
 
-const PORT = parseInt(process.env.SERVER_PORT || "3000", 10);
+const PORT = parseInt(process.env.SERVER_PORT || "3500", 10);
 const API_KEY = process.env.API_KEY?.trim();
 
 interface GraphQLRequestBody {

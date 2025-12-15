@@ -32,7 +32,7 @@ SHOPIFY_SCOPES=read_orders,read_products,read_customers,read_inventory
 SHOPIFY_API_VERSION=2024-10
 
 # HTTP 服务器配置 (仅用于 graphql-server.ts)
-SERVER_PORT=3000
+SERVER_PORT=3500
 API_KEY=your-secret-api-key
 ```
 
@@ -81,9 +81,9 @@ pnpm server
 ============================================================
 Shopify GraphQL Proxy Server
 ============================================================
-[info] 服务已启动: http://localhost:3000
-[info] GraphQL 端点: http://localhost:3000/graphql
-[info] 健康检查: http://localhost:3000/health
+[info] 服务已启动: http://localhost:3500
+[info] GraphQL 端点: http://localhost:3500/graphql
+[info] 健康检查: http://localhost:3500/health
 [info] 店铺域名: your-store.myshopify.com
 [info] API Key 验证: 已启用
 ============================================================
@@ -101,12 +101,12 @@ Shopify GraphQL Proxy Server
 
 ```bash
 # 不带认证
-curl -X POST http://localhost:3000/graphql \
+curl -X POST http://localhost:3500/graphql \
   -H "Content-Type: application/json" \
   -d '{"query": "query { shop { name } }"}'
 
 # 带 API Key 认证
-curl -X POST http://localhost:3000/graphql \
+curl -X POST http://localhost:3500/graphql \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer your-secret-api-key" \
   -d '{"query": "query { shop { name } }"}'
@@ -131,7 +131,7 @@ curl -X POST http://localhost:3000/graphql \
 
 | 配置项 | 值 |
 |--------|-----|
-| GraphQL Endpoint | `http://your-server:3000/graphql` |
+| GraphQL Endpoint | `http://your-server:3500/graphql` |
 | Authorization Header | `Bearer your-secret-api-key`（如设置了 API_KEY）|
 
 ### 使用流程
